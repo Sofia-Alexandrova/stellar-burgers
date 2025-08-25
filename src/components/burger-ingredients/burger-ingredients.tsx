@@ -5,8 +5,8 @@ import { TTabMode } from '@utils-types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '../../services/store'; 
-import { TIngredient } from '@utils-types'; 
+import { RootState } from '../../services/store';
+import { TIngredient } from '@utils-types';
 
 export const BurgerIngredients: FC = () => {
   /** TODO: взять переменные из стора */

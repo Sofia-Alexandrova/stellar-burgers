@@ -1,8 +1,8 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { useSelector } from '../../../services/store'; 
-import { Preloader } from '../preloader';
-import { getUserData } from '../../../services/slices/user'; 
+import { useSelector } from '../../services/store';
+import { Preloader } from '../ui/preloader';
+import { getUserData } from '../../services/slices/user';
 
 interface ProtectedRouteProps {
   children: React.ReactNode;
@@ -26,7 +26,7 @@ export const ProtectedRoute = ({
   }
 
   if (onlyAuthorized && isAuthenticated) {
-    const from = location.state?.from || '/'; 
+    const from = location.state?.from || '/';
     return <Navigate replace to={from} />;
   }
 

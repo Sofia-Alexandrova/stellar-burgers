@@ -21,7 +21,7 @@ import {
 
 import { AppHeader, IngredientDetails, Modal, OrderInfo } from '@components';
 
-import { ProtectedRoute } from '../ui/protected-route/protected-route';
+import { ProtectedRoute } from '../protected-route/protected-route';
 import { useDispatch } from '../../services/store';
 import { getIngredients } from '../../services/slices/ingredients';
 import { getUser } from '../../services/slices/user';
