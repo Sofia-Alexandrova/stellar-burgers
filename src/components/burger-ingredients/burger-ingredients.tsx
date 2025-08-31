@@ -5,24 +5,14 @@ import { TTabMode } from '@utils-types';
 import { BurgerIngredientsUI } from '../ui/burger-ingredients';
 
 import { useSelector } from 'react-redux';
-import { RootState } from '../../services/store';
-import { TIngredient } from '@utils-types';
+import { getIngredientData } from '../../services/slices/ingredients';
 
 export const BurgerIngredients: FC = () => {
   /** TODO: взять переменные из стора */
-  const ingredients = useSelector(
-    (state: RootState) => state.ingredients.ingredients
-  );
-
-  const buns: TIngredient[] = ingredients.filter(
-    (ingredient) => ingredient.type === 'bun'
-  );
-  const mains: TIngredient[] = ingredients.filter(
-    (ingredient) => ingredient.type === 'main'
-  );
-  const sauces: TIngredient[] = ingredients.filter(
-    (ingredient) => ingredient.type === 'sauce'
-  );
+  const { ingredients, error, loading } = useSelector(getIngredientData);
+  const buns = ingredients.filter((item) => item.type === 'bun');
+  const mains = ingredients.filter((item) => item.type === 'main');
+  const sauces = ingredients.filter((item) => item.type === 'sauce');
 
   const [currentTab, setCurrentTab] = useState<TTabMode>('bun');
   const titleBunRef = useRef<HTMLHeadingElement>(null);
@@ -60,6 +50,14 @@ export const BurgerIngredients: FC = () => {
     if (tab === 'sauce')
       titleSaucesRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  // if (error) {
+  //   return <div>Ошибка: {error}</div>;
+  // }
+
+  // if (loading) {
+  //   return <div>Загрузка: {loading}</div>;
+  // }
 
   return (
     <BurgerIngredientsUI

@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useDispatch } from '../../services/store';
 
@@ -11,8 +11,10 @@ export const BurgerIngredient: FC<TBurgerIngredientProps> = memo(
     const location = useLocation();
 
     const dispatch = useDispatch();
-    const handleAdd = () => {};
-    dispatch(addIngredientConstructor(ingredient));
+
+    const handleAdd = () => {
+      dispatch(addIngredientConstructor(ingredient));
+    };
 
     return (
       <BurgerIngredientUI
