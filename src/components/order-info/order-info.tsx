@@ -8,6 +8,11 @@ import { getOrderByNumber, getOrderData } from '../../services/slices/order';
 import { useDispatch } from '../../services/store';
 import { useParams } from 'react-router-dom';
 
+export const formatOrderNumber = (path: string): string => {
+  const orderNumber = path.split('/').pop() || '';
+  return `#${orderNumber.padStart(6, '0')}`;
+};
+
 export const OrderInfo: FC = () => {
   /** TODO: взять переменные orderData и ingredients из стора */
   const { getOrderByNumberResponse, request } = useSelector(getOrderData);

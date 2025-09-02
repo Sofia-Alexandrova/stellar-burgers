@@ -35,3 +35,14 @@
   align-items: center;
   margin: 0 auto;
 }
+
+.navLink {
+  text-decoration: none;
+  color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.navLinkActive {
+  color: #f00;
+}

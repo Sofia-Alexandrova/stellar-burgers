@@ -27,6 +27,7 @@ import { getIngredients } from '../../services/slices/ingredients';
 import { getUser } from '../../services/slices/user';
 import '../../index.css';
 import styles from './app.module.css';
+import { formatOrderNumber } from '../order-info/order-info';
 const App = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -114,7 +115,10 @@ const App = () => {
           <Route
             path='/feed/:number'
             element={
-              <Modal title='Детали заказа' onClose={() => navigate('/feed')}>
+              <Modal
+                title={formatOrderNumber(location.pathname)}
+                onClose={() => navigate('/feed')}
+              >
                 <OrderInfo />
               </Modal>
             }
@@ -131,7 +135,7 @@ const App = () => {
             path='/profile/orders/:number'
             element={
               <Modal
-                title='Детали заказа'
+                title={formatOrderNumber(location.pathname)}
                 onClose={() => navigate('/profile/orders')}
               >
                 <OrderInfo />
